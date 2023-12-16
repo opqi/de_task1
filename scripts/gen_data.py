@@ -1,30 +1,32 @@
 import csv
 import random
 
+
 def generate_data(rows):
     data = []
-    for _ in range(rows):
+    for i in range(rows):
         data.append({
-            'id': generate_id(),
+            'id': i+1,
             'name': generate_name(),
             'age': generate_age(),
             'city': generate_city(),
         })
     return data
 
-def generate_id():
-    return random.randint(1, 1000)
 
 def generate_name():
     names = ['Sofia', 'Anastasia', 'Victoria', 'Ksenia', 'Arina', 'Elizaveta', 'Adelina', 'Irina', 'Elena', 'Polina']
     return random.choice(names)
 
+
 def generate_age():
     return random.randint(18, 60)
+
 
 def generate_city():
     cities = ['Moscow', 'St. Petersburg', 'Novosibirsk', 'Yekaterinburg', 'Nizhny Novogorod', 'Kazan', 'Chelyabinsk', 'Omsk', 'Samara', 'Rostov-on-Don']
     return random.choice(cities)
+
 
 def write_to_csv(data, file_path):
     fieldnames = ['id', 'name', 'age', 'city']
@@ -34,9 +36,10 @@ def write_to_csv(data, file_path):
         writer.writeheader()
         writer.writerows(data)
 
+
 if __name__ == "__main__":
     num_rows = 100
-    csv_file_path = './data/load_data.csv'
+    csv_file_path = './data/people_data.csv'
 
     generated_data = generate_data(num_rows)
 
